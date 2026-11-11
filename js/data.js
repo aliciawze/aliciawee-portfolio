@@ -27,7 +27,7 @@ const G={
  Slack:'<g stroke-width="3.2" stroke-linecap="round"><path d="M12 6v20" stroke="#36C5F0"/><path d="M20 6v20" stroke="#2EB67D"/><path d="M6 12h20" stroke="#ECB22E"/><path d="M6 20h20" stroke="#E01E5A"/></g>',
  CapCut:'<rect x="5" y="11" width="22" height="15" rx="2.5" fill="#1D2747"/><path d="M5 11l20-5 1.2 4.5" fill="#1D2747"/><path d="M14 15.5v6l5-3z" fill="#fff"/>',
  Docker:'<g fill="#2496ED"><rect x="6" y="12" width="5" height="4" rx=".8"/><rect x="12" y="12" width="5" height="4" rx=".8"/><rect x="18" y="12" width="5" height="4" rx=".8"/><rect x="12" y="7" width="5" height="4" rx=".8"/></g><path d="M4 18h23c-1 5-6 8-13 8-5 0-9-3-10-8z" fill="#2496ED"/>',
- Cursor:'<path d="M9 5l15 11-7 1.5 4 8-3 1.5-4-8-5 5z" fill="#1D2747"/>',
+ Cursor:'<circle cx="16" cy="16" r="14" fill="#14120D"/><path d="M16 6.6L24.2 11.3V20.7L16 25.4L7.8 20.7V11.3Z" fill="#EDEDED" stroke="#EDEDED" stroke-width=".8" stroke-linejoin="round"/><path d="M8.5 11.6H23.35L16.14 24.5L16 16.2Z" fill="#14120D"/>',
  LinkedIn:'<rect x="3" y="3" width="26" height="26" rx="5" fill="#0A66C2"/><rect x="8" y="13" width="3.6" height="11" fill="#fff"/><circle cx="9.8" cy="9.2" r="2.1" fill="#fff"/><path d="M15 13h3.4v1.6c.6-1.1 2-1.9 3.7-1.9 3 0 3.9 1.9 3.9 4.8V24h-3.6v-5.8c0-1.5-.4-2.6-1.8-2.6-1.5 0-2 1.1-2 2.6V24H15z" fill="#fff"/>'
 };
 
@@ -42,15 +42,17 @@ const ANSWERS={
 };
 
 /* ---------- Case studies ---------- */
-const LAYERS=`<svg viewBox="0 0 400 320" role="img" aria-label="Merchant readiness model: three layers">
+const LAYERS=`<svg viewBox="0 0 400 320" role="img" aria-label="What a shop needs to sell to AI agents, in three layers">
  <rect width="400" height="320" fill="#FFDCEB"/>
- <rect x="40" y="34" width="320" height="64" rx="14" fill="#fff" fill-opacity=".55" stroke="#F2609A" stroke-dasharray="5 6" stroke-width="1.5"/>
- <text x="60" y="60" font-size="15" font-weight="600">Conversation</text><text x="60" y="82" font-size="12" fill-opacity=".7">optional · the LLM “sales rep”, switched on last</text>
- <rect x="40" y="114" width="320" height="64" rx="14" fill="#fff"/>
- <text x="60" y="140" font-size="15" font-weight="600">Policy</text><text x="60" y="162" font-size="12" fill-opacity=".7">must have · written rules that code enforces</text>
- <rect x="40" y="194" width="320" height="88" rx="14" fill="#2F55D4"/>
- <text x="60" y="222" font-size="15" font-weight="600" style="fill:#fff">Acceptance</text><text x="60" y="244" font-size="12" style="fill:#fff;fill-opacity:.85">must have · deterministic, no LLM</text>
- <g font-size="11" font-weight="600"><rect x="60" y="254" width="62" height="18" rx="9" fill="#C4F1D6"/><text x="73" y="267">verify</text><rect x="128" y="254" width="56" height="18" rx="9" fill="#C4F1D6"/><text x="142" y="267">offer</text><rect x="190" y="254" width="62" height="18" rx="9" fill="#C4F1D6"/><text x="202" y="267">accept</text><rect x="258" y="254" width="46" height="18" rx="9" fill="#C4F1D6"/><text x="270" y="267">log</text></g>
+ <text x="24" y="30" font-size="11.5" font-weight="600" fill-opacity=".7">WHAT A SHOP NEEDS, FROM THE TOP DOWN</text>
+ <rect x="24" y="42" width="352" height="62" rx="14" fill="#fff" fill-opacity=".55" stroke="#F2609A" stroke-dasharray="5 6" stroke-width="1.5"/>
+ <text x="42" y="67" font-size="14.5" font-weight="600">Chat · optional</text><text x="42" y="88" font-size="12" fill-opacity=".75">An AI that answers shoppers’ questions</text>
+ <rect x="24" y="114" width="352" height="62" rx="14" fill="#fff"/>
+ <text x="42" y="139" font-size="14.5" font-weight="600">Rules · must have</text><text x="42" y="160" font-size="12" fill-opacity=".75">Written policies the system enforces</text>
+ <rect x="24" y="186" width="352" height="96" rx="14" fill="#2F55D4"/>
+ <text x="42" y="212" font-size="14.5" font-weight="600" style="fill:#fff">Safe checkout · must have</text><text x="42" y="233" font-size="12" style="fill:#fff;fill-opacity:.85">Runs with no AI involved</text>
+ <g font-size="10.5" font-weight="600"><rect x="42" y="248" width="80" height="20" rx="10" fill="#C4F1D6"/><text x="53" y="262">check agent</text><rect x="128" y="248" width="80" height="20" rx="10" fill="#C4F1D6"/><text x="140" y="262">quote price</text><rect x="214" y="248" width="88" height="20" rx="10" fill="#C4F1D6"/><text x="225" y="262">take payment</text><rect x="308" y="248" width="52" height="20" rx="10" fill="#C4F1D6"/><text x="320" y="262">log it</text></g>
+ <text x="24" y="304" font-size="11" fill-opacity=".65">Most of “ready” sits in the bottom two layers.</text>
 </svg>`;
 const FUNNEL=`<svg viewBox="0 0 400 320" role="img" aria-label="Research report time: weeks before, 3 to 4 hours after">
  <rect width="400" height="320" fill="#C4F1D6"/>
@@ -67,63 +69,92 @@ const FUNNEL=`<svg viewBox="0 0 400 320" role="img" aria-label="Research report 
  </g>
  <text x="30" y="296" font-size="11" fill-opacity=".65">From discovery to a production-ready product</text>
 </svg>`;
+/* Capability-to-goal matrix, drawn from the team's core capability matrix.
+   Filled cell = the capability supports that goal; darker = more pain points on that capability. */
 function heatmap(){
-  const rows=["Pre-flight prep","Customer experience","Aircraft mgmt","Disruption recovery","Loyalty","Data & analytics","IT & cyber"];
-  const v=[[3,3,3,3,3],[3,2,3,1,2],[3,1,2,3,1],[3,3,2,1,1],[1,3,1,1,2],[2,2,2,2,3],[2,1,2,1,3]];
-  const col=["#EEF4FF","#B9CEFF","#6F92F0","#2F55D4"];
+  const rows=[
+    ["Service offering planning",[1,1,1,1,1],0],
+    ["Booking management",[1,1,1,0,1],5],
+    ["Pre-flight preparation",[1,1,1,1,1],6],
+    ["Passenger flight ops",[1,1,0,0,1],8],
+    ["Aircraft management",[0,1,1,1,1],6],
+    ["Marketing planning",[1,0,1,1,0],2],
+    ["Corporate relations",[0,1,1,1,1],1],
+    ["Loyalty flight credits",[1,0,0,0,1],2],
+    ["Customer experience",[1,1,1,0,1],8],
+    ["Freight customer success",[1,1,1,0,0],0]
+  ];
+  const shade=n=>n>=6?"#2F55D4":n>=2?"#6F92F0":"#B9CEFF";
   let g='';
-  rows.forEach((r,i)=>{const y=44+i*36;
-    g+=`<text x="24" y="${y+21}" font-size="12">${r}</text>`;
-    v[i].forEach((n,j)=>{g+=`<rect x="${168+j*42}" y="${y}" width="36" height="30" rx="7" fill="${col[n]}"/>`});
+  ["G1","G2","G3","G4","G5"].forEach((t,j)=>g+=`<text x="${207+j*34}" y="34" font-size="10.5" font-weight="600" text-anchor="middle">${t}</text>`);
+  rows.forEach(([name,links,pains],i)=>{const y=42+i*24;
+    g+=`<text x="18" y="${y+14}" font-size="11">${name}</text>`;
+    links.forEach((on,j)=>{g+=`<rect x="${192+j*34}" y="${y}" width="30" height="20" rx="5" fill="${on?shade(pains):"#EEF4FF"}"/>`});
   });
-  ["G1","G2","G3","G4","G5"].forEach((t,j)=>g+=`<text x="${178+j*42}" y="32" font-size="11" font-weight="600">${t}</text>`);
-  return `<svg viewBox="0 0 400 320" role="img" aria-label="Capability by strategic goal heatmap"><rect width="400" height="320" fill="#D9EAFF"/>${g}<text x="24" y="306" font-size="11" fill-opacity=".65">Capabilities × strategic goals (illustrative extract)</text></svg>`;
+  return `<svg viewBox="0 0 400 320" role="img" aria-label="Which business capabilities support each of Qantas's five strategic goals"><rect width="400" height="320" fill="#D9EAFF"/>${g}
+  <text x="18" y="292" font-size="10" fill-opacity=".75">G1 Customer · G2 Reliability · G3 Fleet &amp; network</text>
+  <text x="18" y="307" font-size="10" fill-opacity=".75">G4 Sustainability · G5 Tech &amp; AI</text></svg>`;
 }
 const P=[
- {id:"agentic",c:"#FFDCEB",r:"-2.5deg",kind:"Agentic commerce · Industry project · 2026",name:"Is the merchant ready for a shopper agent?",
-  short:"AI agents can now shop and pay for people. I built a working pilot in n8n to find out what a merchant needs to serve them safely.",
-  lede:"AI agents can now search, choose and pay on someone’s behalf. Payment networks have built the consumer and payment side. Nobody had defined what “ready” means for the merchant receiving the order.",
-  meta:[["Role","Business analyst & builder"],["Partner","A global payment network"],["Method","Design Science Research"],["Built in","n8n"]],
+ {id:"agentic",c:"#FFDCEB",r:"-2.5deg",kind:"Agentic commerce · Industry project · 2026",name:"What does a shop need before AI agents can buy from it?",
+  short:"AI assistants can now shop and pay on people’s behalf. I researched what online shops need to sell to them safely, and built and tested a readiness check.",
+  lede:"AI assistants, or “shopper agents”, can now search, choose and pay for things on someone’s behalf. Payment networks have prepared their side. Nobody had spelled out what the merchant, the shop selling the item, needs in place to take these orders safely.",
+  meta:[["Role","Business analyst & builder"],["Partner","A global payment network"],["Approach","Design Science Research"],["Built in","n8n (workflow automation)"]],
   beats:[
-   ["The question","Merchants were built to sell to people and block bots. With an agent and no human watching, they have seconds to decide: trust it? What to offer? What if the price moves? How to prove what happened?"],
-   ["My bet","AI isn’t what makes a merchant safe. Verifying the agent, quoting an offer, accepting payment and logging evidence should work with no language model at all. I wrote four hypotheses, with pass rules set before any test ran."],
-   ["What I built","A pilot in n8n: a shopper agent, a merchant with no AI in its decision path, and a mock network issuing single-use tokens. Then I tried to break it: a $285 fare that became $298, hostile requests at volume, and a wrong hotel booked while the human was away."],
-   ["What I found","44 of 44 runs behaved as expected, with no data leaked. It also exposed real gaps, like agents verified too late. I turned it all into a readiness model (3 layers, 13 components, 36 criteria) and a draft self-assessment for merchants."]
+   ["The problem","Online shops were built for human customers, and most try to block bots. Now an AI agent might arrive with a payment token and no human watching. In seconds, the shop has to decide: can I trust this agent? What price do I offer? What if the price changes before payment? If something goes wrong, can I prove what happened?"],
+   ["Discovery","I mapped everyone involved in an agent purchase (shopper, agent, shop, the issuing and acquiring banks, and the payment network) and what each already had in place. The shop’s side was the least defined. Everyone was talking about the AI. Hardly anyone was talking about the harness around it: checking the agent, quoting a firm price, taking payment and keeping a record. None of that needs AI."],
+   ["Scoping it down","We narrowed it to three real situations: a price that changes after the shopper approved it ($285 becomes $298), strange or malicious requests from agents, and an agent booking the wrong hotel while its human is away. For each, I wrote a hypothesis and a pass rule up front, so results couldn’t be fitted after the fact."],
+   ["Building the readiness assessment","The main output is a readiness model a shop can rate itself against: 3 layers, 13 components and 36 criteria. To test it, I built a working setup in n8n: a pretend shopper agent, a shop whose decisions are fully deterministic (no AI), and a mock payment network issuing single-use tokens. Every step writes to a tamper-evident, hash-chained evidence log."],
+   ["What testing showed","All 44 scored runs behaved as expected, which supported our hypotheses. That included 24 probing and prompt-injection attempts with no private data leaked, and a tampered record caught by the evidence log. Testing also exposed real gaps, like agents being checked too late in the process. Those gaps became criteria in the assessment."]
   ],
+  tags:["Design Science Research","Deterministic decision path","Prompt-injection testing","Hash-chained evidence log","Single-use payment tokens","Know Your Agent (KYA)"],
   visual:LAYERS,
-  stats:[["44/44","scored runs as expected"],["0","internal data leaks"],["36","readiness criteria"]],
-  quote:"The chatbot is the visible part. Readiness is decided by the boring layers underneath.",
-  caveatTitle:"Honest limits:",caveat:"a small pilot on a mock network, so it’s a starting point, not proof. The next test is a merchant that does put a model in its decision path.",
+  gallery:[
+   {svg:LAYERS,caption:"Readiness model: what a shop needs, in three layers"},
+   {src:"assets/work/agentic-n8n-workflows.png",alt:"n8n canvas showing the merchant workflow and the shopper agent workflow",caption:"What I built in n8n: an AI shopper agent calling a rule-based merchant (no AI), alongside a mock network, re-consent rule and test control"},
+   {src:"assets/work/agentic-hypotheses.png",alt:"Slide listing four hypotheses, each with a pass rule",caption:"The four hypotheses, each with a pass rule set before testing"},
+   {src:"assets/work/agentic-data-model.png",alt:"Entity relationship diagram of six data tables",caption:"Data model behind the pilot: offers, single-use tokens and traceability logs, linked by session"}
+  ],
+  stats:[["44/44","test runs passed"],["0","private data leaks"],["36","readiness criteria"]],
+  quote:"The chatbot is the part people see. Whether a shop is ready depends on the plain, reliable layers underneath.",
+  caveatTitle:"Honest limits:",caveat:"a small test on a mock network, so it’s a starting point, not proof. The next step is testing a shop that does use AI to make decisions.",
   art:'<rect width="120" height="96" fill="#FFC2DC"/><rect x="18" y="16" width="84" height="18" rx="6" fill="#fff" fill-opacity=".6" stroke="#F2609A" stroke-dasharray="3 3"/><rect x="18" y="39" width="84" height="18" rx="6" fill="#fff"/><rect x="18" y="62" width="84" height="20" rx="6" fill="#2F55D4"/><circle cx="30" cy="72" r="3" fill="#C4F1D6"/><circle cx="40" cy="72" r="3" fill="#C4F1D6"/><circle cx="50" cy="72" r="3" fill="#C4F1D6"/>'},
  {id:"research",c:"#C4F1D6",r:"1deg",kind:"AI transformation · Financial services · Previous role",name:"Building an AI agent hub for an investment firm",
   short:"From “we want AI” to a hub that supports AI agents across the firm’s workflows, starting with research reports that went from weeks to hours.",
   lede:"A mid-size investment firm in APAC asked us to implement AI. The real goals were to save time and take tiring manual work off their people.",
-  meta:[["Role","AI product specialist"],["Client","Mid-size investment firm, APAC"],["Scope","Discovery to production"],["Worked with","Department leads, CTO, engineers"]],
+  meta:[["Role","AI product specialist"],["Client","Mid-size investment firm, APAC"],["Scope","First conversations to a live product"],["Worked with","Department leads, CTO, engineers"]],
   beats:[
    ["Listening first","We asked department leads where their people spent the most time and what wore them out. I’d worked in equity research myself, so I knew these workflows from the inside."],
-   ["Choosing what to build","We mapped current and future states and scored every AI opportunity on effort, impact and fit with the firm’s goals. Equity research reports came out on top: weeks of research, quant analysis and source-checking each."],
-   ["Designing and proving it","I wrote the user stories and requirements, mapped how the AI-supported system would work, and compared models and data connections, including API versus daily batch feeds from the exchange’s data vendor. Then I built a full prototype and demoed it."],
-   ["Shipping it","I worked with engineers to make the demo production-ready. It grew into a hub built to support AI agents across the firm’s workflows. A report that took weeks now takes 3 to 4 hours."],
-   ["Built to empower, not replace","Analysts still ask the questions and steer the analysis. AI does the collating, field-filling and projections, so their time goes to the judgment calls."]
+   ["Choosing what to build","We mapped current and future states and scored every AI opportunity on an effort–impact matrix against the firm’s goals. Equity research reports came out on top. Each one took weeks of research, number crunching and checking sources."],
+   ["Designing and proving it","I wrote the PRD and user stories, designed how the AI-supported workflow would run (a retrieval-augmented, or RAG, pipeline over trusted research sources), and evaluated models on accuracy, cost and fit. I also worked out how to get reliable market data: a live API or an end-of-day batch file from the stock exchange’s data provider, comparing rate limits, pricing and data structure. Then I built a full prototype and demoed it."],
+   ["Shipping it","I worked with engineers to make the demo production-ready. It grew into a central hub where AI agents can support different workflows across the firm. A report that took weeks now takes 3 to 4 hours."],
+   ["Built to empower, not replace","Analysts still ask the questions and steer the analysis. AI gathers the information, fills in the report and runs the projections, so analysts spend their time on judgment calls."]
   ],
+  tags:["Current & future-state process maps","Effort–impact prioritisation","PRD & user stories","RAG pipeline design","Model evaluation","API vs batch data integration"],
   visual:FUNNEL,
-  stats:[["Weeks → 3–4h","per research report"],["Demo → prod","shipped with engineering"],["Analyst-led","AI drafts, people decide"]],
+  stats:[["Weeks → 3–4h","per research report"],["Prototype → live","shipped with engineers"],["Analyst-led","AI drafts, people decide"]],
   quote:"It feels like you really understand our business and what we do.",quoteBy:"the client’s CTO",
   caveatTitle:"Confidentiality:",caveat:"client and product details stay private. Happy to walk through the approach in more depth in person.",
   art:'<rect width="120" height="96" fill="#9FE6BC"/><rect x="16" y="26" width="88" height="14" rx="7" fill="#fff"/><rect x="16" y="52" width="16" height="14" rx="7" fill="#2F55D4"/><circle cx="96" cy="72" r="0" /><path d="M40 59h20" stroke="#1D2747" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 4"/><text x="64" y="63" font-size="10" font-family="sans-serif" fill="#1D2747">3–4h</text>'},
  {id:"qantas",c:"#D9EAFF",r:"2.5deg",kind:"Enterprise architecture · University case study · 2026",name:"Getting an airline AI-ready",
-  short:"Six of us mapped how Qantas could prepare for agentic AI. I owned the business architecture the rest was built on.",
-  lede:"Fragmented data, legacy finance systems and thin AI governance were slowing disruption recovery and customer experience. Playing a consultancy called AiQ, our team designed a target architecture across business, information, application and data.",
-  meta:[["Role","Business architect"],["Team","6, as “AiQ Consultancy”"],["Context","UTS group project"],["Built in","Excel architecture workbook"]],
+  short:"Six of us planned how Qantas could get ready for AI agents. I mapped the business side that the rest of the plan was built on.",
+  lede:"Qantas wants AI agents to help with things like rebooking passengers when flights are disrupted. But its data is scattered, some core systems are old, and there are few rules for how AI should be used. Playing a consultancy called AiQ, our team designed the systems and data plan Qantas would need.",
+  meta:[["Role","Business architect"],["Team","6, as “AiQ Consultancy”"],["Context","UTS group project"],["Built in","Excel"]],
   beats:[
-   ["The question","Where should an airline start if it wants AI agents to help with disruption recovery? Not with the agent. With its goals, and what keeps getting in the way."],
-   ["My part","I built the business layer: a capability map (4 core, 7 enabling) and a catalogue scoring 26 capabilities against 5 strategic goals and 21 pain points."],
-   ["From map to plan","With our principal architect, I prioritised 13 projects and built a three-year roadmap: trusted data and governance first, customer and operations next, legacy retirement last."],
-   ["Making it readable","When feedback said it was hard to follow, I merged capabilities, goals and pain points into one matrix stakeholders could read at a glance."]
+   ["The question","Where should an airline start if it wants AI agents to help, for example when flights are disrupted? Not with the agent. With what the business is trying to achieve, and what keeps getting in the way."],
+   ["My part","I mapped what Qantas does as a business, its “capabilities” like pre-flight preparation or customer service, broken down across three levels (L0 to L2), and scored 26 of them against 5 strategic goals and 21 pain points. That showed where AI would help most and what needed fixing first. The rest of the team built their data and systems plans on top of it."],
+   ["From map to plan","With our lead architect, I ranked 13 proposed projects and laid them out on a three-year roadmap: fix data and AI rules first, then improve customer and operations work, then retire old systems."],
+   ["Making it readable","When feedback said the work was hard to follow, I combined capabilities, goals and pain points into one traceability chart anyone could read at a glance."]
   ],
-  visual:heatmap(),
-  stats:[["26","capabilities mapped"],["21","pain points traced"],["13","projects on a 3-year roadmap"]],
-  quote:"Agents depend on integrated systems and governed data. Fix the foundations first.",
+  tags:["Business capability mapping (L0–L2)","Goal & pain-point traceability","Strategic importance scoring","Project prioritisation","3-year transformation roadmap","Business · information · application · data"],
+  gallery:[
+   {svg:heatmap(),caption:"Which business areas support each strategic goal. Darker squares carry more pain points."},
+   {src:"assets/work/qantas-capability-matrix.png",alt:"Core capability matrix mapping business areas to goals and pain points",caption:"Core capability matrix: each business area mapped to the 5 goals and 21 pain points"},
+   {src:"assets/work/qantas-goals-pain-points.png",alt:"Slide of five business goals and grouped pain points",caption:"The 5 strategic goals and 21 pain points the architecture traces back to"},
+   {src:"assets/work/qantas-prioritisation.png",alt:"Project prioritisation slide with criteria, phases and top seven projects",caption:"Project prioritisation: six criteria, three phases, and the top 7 projects with their dependencies"}
+  ],
+  stats:[["26","business areas mapped"],["21","pain points traced"],["13","projects on a 3-year roadmap"]],
+  quote:"AI agents are only as good as the data and systems behind them. Fix the foundations first.",
   caveatTitle:"Context:",caveat:"a university case study built from public information, not work commissioned by Qantas.",
   art:'<rect width="120" height="96" fill="#B9CEFF"/><g fill="#fff"><rect x="20" y="18" width="16" height="14" rx="3"/><rect x="40" y="18" width="16" height="14" rx="3" fill="#2F55D4"/><rect x="60" y="18" width="16" height="14" rx="3" fill="#6F92F0"/><rect x="80" y="18" width="16" height="14" rx="3"/><rect x="20" y="36" width="16" height="14" rx="3" fill="#6F92F0"/><rect x="40" y="36" width="16" height="14" rx="3"/><rect x="60" y="36" width="16" height="14" rx="3" fill="#2F55D4"/><rect x="80" y="36" width="16" height="14" rx="3" fill="#6F92F0"/><rect x="20" y="54" width="16" height="14" rx="3" fill="#2F55D4"/><rect x="40" y="54" width="16" height="14" rx="3" fill="#6F92F0"/><rect x="60" y="54" width="16" height="14" rx="3"/><rect x="80" y="54" width="16" height="14" rx="3" fill="#2F55D4"/></g><path d="M22 80h74" stroke="#F2609A" stroke-width="3" stroke-linecap="round"/>'}
 ];

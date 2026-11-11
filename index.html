@@ -102,6 +102,12 @@
 
 <!-- flip overlay -->
 <div class="scrim" id="scrim" hidden></div>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="icon-btn lb-close" type="button" aria-label="Close image">✕</button>
+  <button class="icon-btn lb-prev" type="button" aria-label="Previous image">←</button>
+  <figure><div class="lb-media"></div><figcaption></figcaption></figure>
+  <button class="icon-btn lb-next" type="button" aria-label="Next image">→</button>
+</div>
 <div class="flip" id="flip" hidden role="dialog" aria-modal="true" aria-label="Project details">
   <div class="flip-inner">
     <div class="face front" id="front"></div>

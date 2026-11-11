@@ -66,16 +66,49 @@ P.forEach((p,i)=>{
 });
 
 
+/* ---------- case study gallery ---------- */
+function mediaHTML(item){
+  return item.svg?item.svg:`<img src="${item.src}" alt="${item.alt||''}" loading="lazy">`;
+}
+function galleryHTML(items){
+  return `<div class="gallery">
+    <button class="g-main" type="button" aria-label="Enlarge image">${mediaHTML(items[0])}<span class="g-zoom" aria-hidden="true">⤢</span></button>
+    <p class="g-cap">${items[0].caption}</p>
+    ${items.length>1?`<div class="g-thumbs">${items.map((it,i)=>`<button class="g-thumb${i?'':' on'}" type="button" data-i="${i}" aria-label="Show image ${i+1}: ${it.caption}">${mediaHTML(it)}</button>`).join('')}</div>`:''}
+  </div>`;
+}
+let gIndex=0;
+function showGallery(i){
+  const g=slide.querySelector('.gallery'), items=P[cur].gallery; if(!g||!items) return;
+  gIndex=(i+items.length)%items.length;
+  g.querySelector('.g-main').innerHTML=mediaHTML(items[gIndex])+'<span class="g-zoom" aria-hidden="true">⤢</span>';
+  g.querySelector('.g-cap').textContent=items[gIndex].caption;
+  g.querySelectorAll('.g-thumb').forEach((t,k)=>t.classList.toggle('on',k===gIndex));
+}
+
+/* ---------- lightbox ---------- */
+const lb=document.getElementById('lightbox'), lbMedia=lb.querySelector('.lb-media'), lbCap=lb.querySelector('figcaption');
+let lbOpen=false;
+function renderLightbox(){const it=P[cur].gallery[gIndex];lbMedia.innerHTML=mediaHTML(it);lbCap.textContent=`${it.caption} · ${gIndex+1} of ${P[cur].gallery.length}`}
+function openLightbox(){if(!P[cur]||!P[cur].gallery) return;lbOpen=true;renderLightbox();lb.hidden=false;requestAnimationFrame(()=>lb.classList.add('on'));lb.querySelector('.lb-close').focus()}
+function closeLightbox(){lbOpen=false;lb.classList.remove('on');setTimeout(()=>{lb.hidden=true;const m=slide.querySelector('.g-main');if(m)m.focus()},250)}
+function stepLightbox(d){showGallery(gIndex+d);renderLightbox()}
+lb.querySelector('.lb-close').onclick=closeLightbox;
+lb.querySelector('.lb-prev').onclick=()=>stepLightbox(-1);
+lb.querySelector('.lb-next').onclick=()=>stepLightbox(1);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox()});
+
 function slideHTML(p){
   return `<div class="slide-in">
     <div>
       <h2>${p.name}</h2>
       <p class="lede">${p.lede}</p>
       <dl class="meta">${p.meta.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
+      ${p.tags?`<div class="tags"><span class="tags-k">Under the hood</span><ul>${p.tags.map(t=>`<li>${t}</li>`).join('')}</ul></div>`:''}
       <div class="beats">${p.beats.map(([t,d])=>`<section class="beat"><h4>${t}</h4><p>${d}</p></section>`).join('')}</div>
     </div>
     <div class="side">
-      <div class="visual">${p.visual}</div>
+      ${p.gallery?galleryHTML(p.gallery):`<div class="visual">${p.visual}</div>`}
       <div class="stats">${p.stats.map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
       <p class="quote">“${p.quote}”${p.quoteBy?`<span class="by">— ${p.quoteBy}</span>`:''}</p>
       <p class="caveat"><b>${p.caveatTitle}</b> ${p.caveat}</p>
@@ -98,7 +131,7 @@ function fill(i){
   const p=P[i];
   flip.style.setProperty('--c',p.c);
   front.innerHTML=`<div class="card" style="--c:${p.c}">${cardHTML(p)}</div>`;
-  slide.innerHTML=slideHTML(p);slide.scrollTop=0;
+  slide.innerHTML=slideHTML(p);slide.scrollTop=0;gIndex=0;
   slideK.textContent=`${p.kind} · ${i+1} of ${P.length}`;
 }
 function openProject(i){
@@ -146,7 +179,17 @@ careerBtn.onclick=()=>{
   careerBtn.firstChild.textContent=open?'Hide career history ':'View my career history ';
   if(open) setTimeout(()=>{const y=career.getBoundingClientRect().top+scrollY+10;scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})},350);
 };
+slide.addEventListener('click',e=>{
+  const t=e.target.closest('.g-thumb'); if(t){showGallery(+t.dataset.i);return}
+  if(e.target.closest('.g-main')) openLightbox();
+});
 addEventListener('keydown',e=>{
+  if(lbOpen){
+    if(e.key==='Escape') closeLightbox();
+    if(e.key==='ArrowRight') stepLightbox(1);
+    if(e.key==='ArrowLeft') stepLightbox(-1);
+    return;
+  }
   if(cur<0) return;
   if(e.key==='Escape') closeProject();
   if(e.key==='ArrowRight') step(1);
