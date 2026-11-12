@@ -27,7 +27,8 @@ function layoutTools(){
     d.style.left=x+'px';d.style.top=y+'px';
     d.style.setProperty('--r',((t-.5)*16).toFixed(1)+'deg');
     d.style.animationDelay=(-i*.55)+'s';
-    d.innerHTML=`<svg viewBox="0 0 32 32">${G[name]}</svg><span>${li?'LinkedIn ↗':name}</span>`+(li?'<em>say hi!</em>':'');
+    const ic=G[name];
+    d.innerHTML=(typeof ic==='string'?`<svg viewBox="0 0 32 32">${ic}</svg>`:`<svg viewBox="${ic.vb}">${ic.body}</svg>`)+`<span>${li?'LinkedIn ↗':name}</span>`+(li?'<em>say hi!</em>':'');
     toolsEl.appendChild(d);
   });
 }
@@ -205,4 +206,3 @@ async function copyText(t,msg){
   catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('email'));const s=getSelection();s.removeAllRanges();s.addRange(r);say('Selected. Press Ctrl/⌘ + C to copy.')}
 }
 document.getElementById('copy').onclick=()=>copyText(document.getElementById('email').textContent,'Email copied');
-document.querySelectorAll('.door').forEach(c=>c.onclick=()=>copyText(c.dataset.p,'Opening line copied. Paste it into an email to alicia.w.zien@gmail.com.'));

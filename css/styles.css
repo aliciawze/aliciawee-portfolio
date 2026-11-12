@@ -252,7 +252,7 @@ a{color:inherit}
 .mail{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 18px;box-shadow:0 14px 30px -18px rgba(47,85,212,.5)}
 .mail code{font-family:var(--f-body);font-size:15px;user-select:all}
 .doors{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:4px auto 22px}
-.door{all:unset;cursor:pointer;padding:14px 26px;border-radius:999px;background:var(--ink-blue);color:#fff;font-size:16px;font-weight:500;box-shadow:0 14px 28px -16px rgba(47,85,212,.8);transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s}
+.door{all:unset;cursor:pointer;text-decoration:none;padding:14px 26px;border-radius:999px;background:var(--ink-blue);color:#fff;font-size:16px;font-weight:500;box-shadow:0 14px 28px -16px rgba(47,85,212,.8);transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s}
 .door+.door{background:#fff;color:var(--ink-blue);border:1px solid rgba(47,85,212,.35)}
 .door:hover{transform:translateY(-3px)}
 .door:focus-visible{outline:2px solid var(--ink-blue);outline-offset:3px}
